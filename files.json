@@ -1,6 +1,62 @@
 [
   {
     "fileName": "cuisine",
-    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/9451034c47e0c10ef968bfe7562522e6.png"
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/9cc8f0bdf177d0f039c1ebd5c215c517.png"
+  },
+  {
+    "fileName": "deduction",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/ab1438f2d8b5b53c55fbbc6afa4bc6a8.png"
+  },
+  {
+    "fileName": "detection",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/3ef07adfabf5bc471284d0fb3654fb35.png"
+  },
+  {
+    "fileName": "expense",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/cb39e928fa0460820991d835ead35003.png"
+  },
+  {
+    "fileName": "fine_food",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/1275ba03cc1e273c6abf10bb834d8466.png"
+  },
+  {
+    "fileName": "foodstuff",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/19f9f2d7e81ccb306cc2cd73cbc9a8d0.png"
+  },
+  {
+    "fileName": "management",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/dbdc5d9ac9d41dc49352dca8e817d118.png"
+  },
+  {
+    "fileName": "message_board",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/4b1222546fb37d4af8cf0d392cf65c05.png"
+  },
+  {
+    "fileName": "mini_program",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/e1ffeeda4ddc87d32e6b8251fd063225.png"
+  },
+  {
+    "fileName": "monitoring",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/73a9dcbeaf6f78584d2023b16e66f02a.png"
+  },
+  {
+    "fileName": "more",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/134afb38c16c856b723ca413fd5a5757.png"
+  },
+  {
+    "fileName": "send_back",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/db429f882b409643c4051510a926edc9.png"
+  },
+  {
+    "fileName": "staff",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/f6199445976225e2fe3a8b86abd5e4d0.png"
+  },
+  {
+    "fileName": "top_up",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/7aafdb57ca8669dacacd535766f6af09.png"
+  },
+  {
+    "fileName": "vote",
+    "url": "https://ycy-private.obs.cn-east-2.myhuaweicloud.com:443/imgs/46579c2350f724df8a973ccac10a3ded.png"
   }
 ]
