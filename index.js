@@ -64,7 +64,7 @@ async function main() {
     if (!filePostedArr.includes(undefined)){
       // 生成对象结构
       filePostedArr.forEach(item => {
-        filePostedObj[item.fileName] = item.url
+        filePostedObj[item.fileName.toUpperCase()] = item.url
       })
       // 写文件
       await writFile({fileName:'./files.json',str: JSON.stringify(filePostedObj)})
