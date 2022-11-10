@@ -1,0 +1,6 @@
+上传图片到云服务器脚本，并自动生成路径json文件
+
+1. 将图片放到needPostImg文件夹下
+2. 执行 node index.js
+3. 会根据图片名称,生成别名与对应的路径到files.json
+4. 执行 node clear.js 清除needPostImg文件夹下的图片

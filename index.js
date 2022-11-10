@@ -2,6 +2,16 @@ const fs = require("fs");
 const FormData = require("form-data");
 const axios = require("axios");
 
+
+const token =
+  "";
+const IMG_SERVICE_URL = 'https://api.yichuyun.cn/api/obs/upload'
+
+// 上传后的所有文件信息
+let filePostedArr = [];
+let filePostedObj ={}
+
+
 async function uploadFile({
   file,
   save_path = "imgs",
@@ -20,7 +30,7 @@ async function uploadFile({
     );
   });
   const res = await axios({
-    url: "https://api.yichuyun.cn/api/obs/upload",
+    url: IMG_SERVICE_URL,
     method: "POST",
     data: formData,
     headers: {
@@ -38,12 +48,6 @@ async function writFile({
   const res = await fs.writeFileSync('./'+fileName,str)
   return res
 }
-const token =
-  "";
-
-// 上传后的所有文件信息
-let filePostedArr = [];
-let filePostedObj ={}
 
 async function main() {
   const fileList = fs.readdirSync("./needPostImg");
