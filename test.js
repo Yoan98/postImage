@@ -1,2 +1,3 @@
-const str = 'cccc'
-console.log(str.toUpperCase())
+const fs = require("fs");
+const fileList = fs.readdirSync("./needPostImg");
+console.log(fileList)

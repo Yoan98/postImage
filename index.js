@@ -4,13 +4,14 @@ const axios = require("axios");
 
 
 const token =
-  "";
+"";
 const IMG_SERVICE_URL = 'https://api.yichuyun.cn/api/obs/upload'
 
 // 上传后的所有文件信息
 let filePostedArr = [];
 let filePostedObj ={}
 
+const supportFileType = ['png', 'jpg']
 
 async function uploadFile({
   file,
@@ -50,7 +51,10 @@ async function writFile({
 }
 
 async function main() {
-  const fileList = fs.readdirSync("./needPostImg");
+  const fileList = fs.readdirSync("./needPostImg").filter(item => {
+    const fileType = item.split('.')[1]
+    return supportFileType.includes(fileType)
+  })
   filePostedArr = Array.from(Array(fileList.length))
 
   fileList.forEach(async (fileName,index) => {
@@ -59,6 +63,7 @@ async function main() {
       file: imgFile,
       token,
     });
+    console.log(res)
     const info = {
       fileName: fileName.split(".")[0],
       url: res.data.upload,
