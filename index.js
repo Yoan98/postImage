@@ -57,7 +57,7 @@ async function main() {
     const fileList = fs.readdirSync("./needPostImg").filter(item => {
         const fileType = item.split('.')[1]
         const isSupport = supportFileType.includes(fileType)
-        if (hasUnsupportFile) {
+        if (!isSupport) {
             hasUnsupportFile = true
         }
         return isSupport
