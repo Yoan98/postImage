@@ -2,11 +2,8 @@ const fs = require("fs");
 const FormData = require("form-data");
 const axios = require("axios");
 const pinyin = require("pinyin");
+const CONFIG = require("./config");
 
-
-const token =
-    "";
-const IMG_SERVICE_URL = 'http://test.api.yichuyun.cn/api/obs/upload'
 
 // 上传后的所有文件信息
 let filePostedArr = [];
@@ -16,29 +13,28 @@ const supportFileType = ['png', 'jpg']
 
 async function uploadFile({
     file,
-    save_path = "imgs",
-    file_key = "upload",
-    file_pre = "img",
-    token,
 }) {
     let formData = new FormData();
-    formData.append("upload", file);
-    formData.append("file_key", file_key);
-    formData.append("save_path", save_path);
-    formData.append("file_pre", file_pre);
+    formData.append(CONFIG.FILE_FIELD, file);
+
+    for (let key in CONFIG.EXTRA_FORM_DATA) {
+        formData.append(key, CONFIG.EXTRA_FORM_DATA[key]);
+    }
+
+
     let len = await new Promise((resolve, reject) => {
         return formData.getLength((err, length) =>
             err ? reject(err) : resolve(length)
         );
     });
     const res = await axios({
-        url: IMG_SERVICE_URL,
+        url: CONFIG.SERVICE_URL,
         method: "POST",
         data: formData,
         headers: {
             "Content-Length": len,
             "Content-Type": "multipart/form-data",
-            Authorization: token,
+            Authorization: CONFIG.AUTH_TOKEN,
         },
     });
     return res.data;
@@ -64,7 +60,7 @@ async function main() {
     })
 
     if (hasUnsupportFile) {
-        console.log('存在不支持的文件类型')
+        console.log('exist unsupport file type')
         return
     }
 
@@ -74,22 +70,25 @@ async function main() {
         let imgFile = fs.createReadStream("./needPostImg/" + fileName);
         const res = await uploadFile({
             file: imgFile,
-            token,
         });
 
-        console.log(res)
+        console.log('response from upload api', res)
 
         const originFileName = fileName.split(".")[0];
-        let newName = pinyin(originFileName, {
-            style: pinyin.STYLE_NORMAL,
-            heteronym: false
-        }).join("");
-        newName = newName.replace(/\s+/g, "");
-        newName = newName.replace(/(\@2x|\@1x)/gi, "");
-        newName = newName.replace(/\([0-9a-z]*\)/gi, "");
+
+        let pinYinName = ''
+        if (CONFIG.OPEN_PINYIN_NAME){
+            pinYinName = pinyin(originFileName, {
+                style: pinyin.STYLE_NORMAL,
+                heteronym: false
+            }).join("");
+            pinYinName = pinYinName.replace(/\s+/g, "");
+            pinYinName = pinYinName.replace(/(\@2x|\@1x)/gi, "");
+        }
+
         const info = {
-            fileName: newName,
-            url: res.data.upload,
+            fileName: CONFIG.OPEN_PINYIN_NAME ? pinYinName : originFileName,
+            url: res.data[CONFIG.RETURN_URL_FIELD],
         };
         filePostedArr[index] = info
 
@@ -100,7 +99,7 @@ async function main() {
             })
             // 写文件
             await writFile({ fileName: './files.json', str: JSON.stringify(filePostedObj) })
-            console.log('生成完毕')
+            console.log('Generate files.json success!!!')
         }
     });
 
